@@ -17,7 +17,7 @@ class Student
     name TEXT,
     grade TEXT
     )
-    SQL 
+    SQL
     DB[:conn].execute(sql)
   end
   
@@ -36,7 +36,7 @@ end
     @id = DB[:conn].execute("SELECT last_insert_rowid() FROM songs")[0][0]
   end
   
-  def self.create(name:, grade:)
+  def self.create(name, grade)
     new_student = Student.new(name, grade)
     new_student = student.save
     new_student
@@ -55,7 +55,7 @@ end
     SELECT * 
     FROM students
     WHERE name = ?
-    SQL 
+    SQL
     DB[:conn].execute(sql,name).map do |row|
     self.new_from_db(row)[0]
   end
