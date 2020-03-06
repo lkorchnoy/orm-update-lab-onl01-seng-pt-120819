@@ -63,7 +63,7 @@ end
   
   def update
   if self.id
-    self.update
+    
   else
     save
 end
