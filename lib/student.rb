@@ -33,20 +33,20 @@ end
     SQL
 
     DB[:conn].execute(sql, self.name, self.grade)
-    @id = DB[:conn].execute("SELECT last_insert_rowid() FROM songs")[0][0]
+    @id = DB[:conn].execute("SELECT last_insert_rowid() FROM students")[0][0]
   end
   
   def self.create(name, grade)
-    new_student = Student.new(name, grade)
-    new_student = student.save
-    new_student
+    student = Student.new(name, grade)
+    student.save
+    student
 end
 
   def self.new_from_db(row)
-    new_student = self.new #Student.new
-    new_student_id = row[0]
-    new_student_name = row[1]
-    new_student_grade = row[2]
+    id = row[0]
+    name = row[1]
+    grade = row[2]
+    new_student = self.new(id, name, grade)
     new_student
   end
 
